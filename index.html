@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tricky Funny Challenge!</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #ffe4e1;
+            text-align: center;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffdab9;
+            border: 5px dashed #ff6347;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .funny-question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .answer-input {
+            margin-top: 10px;
+            padding: 10px;
+            width: 60%;
+            font-size: 16px;
+            border: 2px solid #333;
+            border-radius: 10px;
+        }
+        .submit-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #32cd32;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .submit-button:hover {
+            background-color: #228b22;
+            transform: scale(1.1);
+        }
+        .hidden-content {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffebcd;
+            border: 2px solid #d2691e;
+            border-radius: 10px;
+        }
+        .success-message {
+            font-size: 18px;
+            color: #32cd32;
+        }
+        .error-message {
+            font-size: 18px;
+            color: #dc143c;
+        }
+        .confetti {
+            font-size: 30px;
+            color: #ff69b4;
+            animation: confetti 1s infinite alternate;
+        }
+        @keyframes confetti {
+            from { transform: rotate(-10deg); }
+            to { transform: rotate(10deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Tricky Funny Challenge!</h1>
+        <p class="funny-question">If a chicken had a joke, what would it say when it crossed the road?</p>
+        <input type="text" class="answer-input" id="answer" placeholder="Type your funny answer here...">
+        <button class="submit-button" onclick="revealContent()">Submit Your Funny Answer</button>
+        <div id="result" class="hidden-content"></div>
+    </div>
+
+    <script>
+        function revealContent() {
+            var resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `
+                <div class="success-message">
+                    You got it! Here's your hilarious reward:
+                </div>
+                <div class="confetti">🎉🎉🎉</div>
+                <p><a href="https://youtube.com/shorts/KyOQzJsx3Oc?si=rYCRT7eujvAwSCy9" target="_blank">Click here to laugh!</a></p>
+            `;
+            resultDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
