@@ -3,28 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USE HEADPHONE MUST</title> 
+    <title>USE HEADPHONE</title>
     <style>
-        #videoContainer {
-            display: none;
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #button-container {
             text-align: center;
+        }
+        #video {
+            display: none;
             margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+        #countdown {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <button id="playButton">DO IT</button> 
-
-    <div id="videoContainer">
-        <iframe id="videoPlayer" width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div id="button-container">
+        <button id="click-me">Click Me</button>
+        <div id="countdown"></div>
+        <div id="video-container">
+            <iframe id="video" src="https://www.youtube.com/embed/8HkJiPL0Crc?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
     </div>
 
     <script>
-        document.getElementById('playButton').addEventListener('click', function() {
-            var videoContainer = document.getElementById('videoContainer');
-            var videoPlayer = document.getElementById('videoPlayer');
-            videoPlayer.src = "https://www.youtube.com/embed/8HkJiPL0Crc?si=B8ol6frakbQLjrW3";
-            videoContainer.style.display = 'block';
+        document.getElementById('click-me').addEventListener('click', function() {
+            let countdownElement = document.getElementById('countdown');
+            let videoElement = document.getElementById('video');
+
+            countdownElement.style.display = 'block';
+
+            let count = 3;
+            let countdownInterval = setInterval(function() {
+                countdownElement.innerText = count;
+                count--;
+
+                if (count < 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.style.display = 'none';
+                    videoElement.style.display = 'block';
+                }
+            }, 1000);
         });
     </script>
 </body>
