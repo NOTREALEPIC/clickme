@@ -12,46 +12,38 @@
             height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
-        }
-        #button-container {
             text-align: center;
         }
-        #video {
-            display: none;
+        #container {
             margin-top: 20px;
-            max-width: 100%;
-            height: auto;
         }
-        #countdown {
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        iframe {
             display: none;
         }
     </style>
 </head>
 <body>
-    <div id="button-container">
-        <button id="click-me">Click Me</button>
-        <div id="countdown"></div>
-        <div id="video-container">
-            <iframe id="video" src="https://www.nsfwyoutube.com/embed/8HkJiPL0Crc?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
+    <div id="container">
+        <button id="clickMe">Click Me</button>
+        <iframe id="ivplayer" width="640" height="360" src="https://inv.nadeko.net/embed/8HkJiPL0Crc?t=4" style="border:none;"></iframe>
     </div>
 
     <script>
-        document.getElementById('click-me').addEventListener('click', function() {
-            let countdownElement = document.getElementById('countdown');
-            let videoElement = document.getElementById('video');
+        document.getElementById('clickMe').addEventListener('click', function() {
+            let countdown = 3;
 
-            countdownElement.style.display = 'block';
+            const interval = setInterval(() => {
+                alert(countdown);
+                countdown--;
 
-            let count = 3;
-            let countdownInterval = setInterval(function() {
-                countdownElement.innerText = count;
-                count--;
-
-                if (count < 0) {
-                    clearInterval(countdownInterval);
-                    countdownElement.style.display = 'none';
-                    videoElement.style.display = 'block';
+                if (countdown < 0) {
+                    clearInterval(interval);
+                    document.getElementById('ivplayer').style.display = 'block';
                 }
             }, 1000);
         });
